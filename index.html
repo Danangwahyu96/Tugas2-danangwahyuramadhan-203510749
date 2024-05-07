@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tugas2</title>
+    <!-- Sertakan Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- Tambahkan beberapa style -->
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+        .large-text {
+            font-size: 24px;
+        }
+        .red-text {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- Elemen HTML -->
+        <h1>Selamat Datang di Halaman Vue.js</h1>
+        <p>Danang wahyu ramadhan - 203510749</p>
+
+        <!-- Elemen input teks -->
+        <label for="inputText">Masukkan Nama Anda: </label>
+        <input type="text" id="inputText" v-model="name">
+
+        <!-- Gabungan penggunaan class bindings dan style bindings -->
+        <p :class="{'highlight': isHighlighted, 'red-text': isRedText}"
+           :style="{'font-size': fontSize + 'px'}">
+            Halo, {{ name }}! Apa kabar?
+        </p>
+
+        <!-- Tombol untuk mengubah class bindings -->
+        <button @click="toggleHighlight">Toggle Highlight</button>
+        <button @click="toggleRedText">Toggle Red Text</button>
+
+        <!-- Tombol untuk mengubah style bindings -->
+        <button @click="increaseFontSize">Perbesar Teks</button>
+        <button @click="decreaseFontSize">Perkecil Teks</button>
+    </div>
+
+    <!-- Vue Instance -->
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                isHighlighted: false,
+                isRedText: false,
+                fontSize: 16
+            },
+            methods: {
+                toggleHighlight() {
+                    this.isHighlighted = !this.isHighlighted;
+                },
+                toggleRedText() {
+                    this.isRedText = !this.isRedText;
+                },
+                increaseFontSize() {
+                    this.fontSize += 2;
+                },
+                decreaseFontSize() {
+                    this.fontSize -= 2;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
